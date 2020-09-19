@@ -31,6 +31,10 @@ def hello_world():
     df = scrape("deep learning")
     return render_template('index.html',  tables=[df.to_html(classes='data')], titles=df.columns.values)
 
+@app.route('/docs')
+def docs():
+    return render_template('docs.html')
+
 @app.route('/api',methods = ['GET'])
 def api():
     args = request.args
