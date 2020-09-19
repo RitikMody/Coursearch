@@ -1,0 +1,188 @@
+.main{
+  background-color:#1d1b38;
+  width: 80%;
+  margin: auto;
+}
+
+/* nav bar */
+.navbar-brand{
+  font-size: 2rem;
+  font-family: 'Roboto',sans-serif;
+  font-weight:500;
+  color:#fdbf50;
+}
+.fa{
+  color:#fdbf50 !important;
+  font-size:28px;
+}
+
+.nav-item{
+  padding: 0 5px;
+}
+
+.nav-link{
+  font-size: 0.8rem;
+  font-family:'Roboto',sans-serif;
+  font-weight:300;
+  color:#fdbf50;
+}
+
+.nav-link:hover{
+  color: #f7b33e;
+}
+
+.navbar-brand:hover{
+  color: #f7b33e;
+}
+
+/* home */
+.home{
+  padding: 2rem;
+}
+
+.header{
+  font-family: 'Roboto',sans-serif;
+  font-weight: 700;
+}
+
+.title{
+  color: #ff6464 ;
+  font-size: 3.2rem;
+}
+
+.row-manip{
+  padding:3.5rem 0 0 0;
+}
+.col-manip{
+  padding: 2rem 1.5rem;
+  margin: auto;
+  text-align: center;
+}
+
+.desc{
+  color: #fdbf50;
+  font-family: 'Roboto',sans-serif;
+  font-weight: 400;
+  font-size:1.2rem;
+  line-height: 1.5;
+}
+
+.searchbar {
+    margin-top: 2em;
+    border: none;
+    width: 80%;
+    color: #ff6464;
+    border-bottom: 1px #ff6464 solid;
+    background: transparent;
+    text-transform: uppercase;
+    padding-top: 1.5rem;
+}
+
+::placeholder {
+    color: #ff6464;
+    opacity: .7;
+    padding-left: 1%;
+}
+
+*:focus {
+    outline: none;
+}
+
+.go {
+    margin-top: 2em;
+    color: #ff6464;
+    border: none;
+    cursor: pointer;
+    background: transparent;
+}
+
+.go:hover {
+    color: #fc5656;
+}
+
+.img-home{
+    height: 15rem;
+    padding: 0;
+}
+
+/* Results page */
+.nav-adjust{
+  width: 80%;
+  margin: auto;
+}
+
+.results{
+  text-align: center;
+  margin: auto;
+  background-color: #f8f8f8;
+}
+
+.section-head{
+  background-color: #1d1b38;
+}
+
+.result-header{
+  padding: 2rem 0 4rem 0;
+}
+
+.head{
+  font: 'Roboto', sans-serif;
+  font-weight: 700;
+  color: #ff6464;
+  font-size: 4rem;
+}
+
+.contents{
+  background: #f8f8f8;
+  margin: auto;
+  padding: 2rem 0;
+  font: 'Roboto', sans-serif;
+  font-weight: 500;
+  color: #1d1b38;
+  font-size: 1.2rem;
+}
+
+.img-course{
+  height: 8rem;
+  margin: 1rem 0;
+}
+
+.table{
+  text-align: left;
+}
+
+.table-header{
+  color: #ff6464;
+}
+
+.visit-link{
+  background-color: #ff6464  !important;
+  border-width: 0 !important;
+  color: #f8f8f8 !important;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+}
+.icon{
+  color: #f8f8f8 !important;
+}
+.page-link{
+  background-color: #1d1b38;
+  color:#f8f8f8;
+}
+
+.active{
+  background-color: #f8f8f8;
+  color:#ff6464;
+}
+
+/* footer */
+.footer{
+    font-family:'Roboto',sans-serif;
+    font-weight:300;
+    color:#fdbf50;
+    font-size: 0.8rem;
+    text-align: center;
+    padding-top: 2rem;
+}
+/*2c1654 ff6464 00be65 fdf550 */
