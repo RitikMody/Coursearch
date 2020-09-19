@@ -65,18 +65,16 @@ def getCourses(search_keyword):
 			stars_selector = "article.catalog-component div.catalog-component__details div.layout__button-container div.reviews div.nd-rating-stars div.active-stars"
 
 			if course.select_one(reviews_selector).text:
-				mydict["reviews"] = course.select_one(reviews_selector).text
-				mydict["stars"] = format_stars(course.select_one(stars_selector)['style'])
-				mydict["title"] = course.select_one(title_selector).text
-				mydict["partner"] = course.select_one(partner_selector).text
-				mydict["author"] = course.select(author_selector)[-1].text
-				mydict["link"] = 'https://www.udacity.com' + course.select_one(link_selector)['href']
-				mydict["image"] = image_selector
-				mydict["level"] = course.select_one(level_selector).text.capitalize()
+				mydict["rating_count"] = course.select_one(reviews_selector).text
+				mydict["rating_out_of_five"] = format_stars(course.select_one(stars_selector)['style'])
+				mydict["course_name"] = course.select_one(title_selector).text
+				mydict["offered_by"] = course.select_one(partner_selector).text
+				mydict["partner_name"] = course.select(author_selector)[-1].text
+				mydict["link_to_course"] = 'https://www.udacity.com' + course.select_one(link_selector)['href']
+				mydict["image_link"] = image_selector
+				mydict["difficulty_level"] = course.select_one(level_selector).text.capitalize()
 				mylist.append(json.dumps(mydict))
 			else:
 				continue
 	driver.close()
 	return mylist
-
-print(getCourses("Machine Learning"))

@@ -24,7 +24,7 @@ def formatreviews(x):
 		n = 0
 	return n
 
-def getCourses(driver, search_keyword):
+def getCourses(search_keyword):
 	driver = configure_driver()
 
 	driver.get(f"https://www.pluralsight.com/search?q={search_keyword}&categories=course")
@@ -50,11 +50,11 @@ def getCourses(driver, search_keyword):
 			mydict["course_name"] = course.select_one(TITLE_SELECTOR).text
 			mydict["partner_name"] = (course.select_one(AUTHOR_SELECTOR).text).replace('by ', '')
 			mydict["difficulty_level"] = course.select_one(LEVEL_SELECTOR).text
-			mydict["length"] = course.select_one(LENGTH_SELECTOR).text
+			mydict["rating_out_of_five"] = course.select_one(LENGTH_SELECTOR).text
 			mydict["reviews"] = (formatreviews(course.select_one(REVIEWS_SELECTOR)))
 			mydict["image_link"] = course.select_one(IMAGE_SELECTOR)['src']
 			mydict["offered_by"] = "Pluralsight"
-			mydict["link"] = course.select_one(LINK_SELECTOR)['href']
+			mydict["link_to_course"] = course.select_one(LINK_SELECTOR)['href']
 			mylist.append(mydict)
 	# print(mylist)
 
