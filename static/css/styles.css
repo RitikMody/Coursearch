@@ -163,7 +163,9 @@
 
 .img-course {
   height: 8rem;
+  width: 8rem;
   margin: 1rem 0;
+  border-radius: 50%;
 }
 
 .table {
@@ -212,9 +214,6 @@ a.page-link {
 }
 
 
-/*2c1654 ff6464 00be65 fdf550 */
-
-
 /* footer */
 
 .res-footer{
@@ -257,4 +256,59 @@ a.page-link,.previous
 {
   background-color: #f7b33e !important;
 }
+
+
+/* Card section */
+
+.mobile{
+  background: #f8f8f8;
+  margin: auto;
+  padding: 2rem 0;
+  font-family: 'Roboto', sans-serif; 
+  font-weight: 300;
+  color: #1d1b38;
+  font-size: 1rem;
+}
+.card{
+  margin: 2rem 0;
+}
+.card-image{
+  margin: 3rem 0;
+}
+
+.card-body{
+  font-family: 'Roboto';
+}
+
+.course-desc{
+  text-align: left;
+  padding-left: 2rem; 
+}
+
+.visit-link-mobile{
+  background-color: #ff6464 !important;
+  border-width: 0 !important;
+  color: #f8f8f8 !important;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+}
+
+.course-name{
+  color: #ff6464;
+}
+
+
+@media (max-width: 992px) {
+  .contents {
+      display: none;
+  }
+}
+
+@media (min-width: 992px) {
+  .mobile {
+      display: none;
+  }
+}
+/*2c1654 ff6464 00be65 fdf550 */
 /*2c1654 ff6464 00be65 fdf550 */
