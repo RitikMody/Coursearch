@@ -4,6 +4,7 @@
 <head>
 
   <meta charset="utf-8">
+  <link rel="icon" href="static/images/circle-cropped.png" class="nav-icon">
   <title>Coursearch</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,6 +24,7 @@
   <!-- navbar -->
 
   <nav class="navbar navbar-expand-lg">
+    <a class="navbar-brand" href="/"><img src="static/images/Coursearch.png" alt="image" class="nav-icon"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon">
         <i class="fa fa-navicon" class="hamburger"></i>
@@ -31,7 +33,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <a href="#" class="nav-link">Search</a>
+          <a href="#search" class="nav-link">Search</a>
         </li>
         <li class="nav-item">
           <a href="/docs" class="nav-link">Documentation</a>
@@ -47,17 +49,18 @@
         <h1 class="title">Coursearch</h1>
       </div>
       <div class="row row-manip">
+        <div class="col-lg-6 order-lg-2 order-md-1 order-sm-1 col-manip">
+          <img src="static/images/home-img1.svg" alt="image" class="img-home">
+        </div>
         <div class="col-lg-6 order-lg-1 order-md-2 order-sm-2 col-mainp">
           <p class="desc">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Turpis egestas sed tempus urna et pharetra pharetra massa.
+            Since the start of the lockdown, have you too been confused about which courses to choose? Stuck with too many options from Coursera, Udemy, and other such sites?<br>
+            If so, this app is your solution! Just enter something you want to learn, and we'll get you courses from top platforms, effectively ranked with our <em>unique algorithm</em>. You no longer have to worry about choosing the best options with a list of the best ranked courses from the top websites!
           </p>
-          <form class="search" action="{{ url_for('get_query') }}" method="post">
+          <form class="search" action="{{ url_for('get_query') }}" method="post" id="search">
             <input class='searchbar transparent' id='query' name='query' type='text' required placeholder='Search' autocomplete="off" />
             <span><button type="submit" name="submit" class="button go"><i class="fas fa-search"></i></button>
           </form>
-        </div>
-        <div class="col-lg-6 order-lg-2 order-md-1 order-sm-1 col-manip">
-          <img src="static/images/home-img1.svg" alt="image" class="img-home">
         </div>
       </div>
   </section>
