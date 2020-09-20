@@ -85,4 +85,4 @@ We are open to enhancement and bug fixes: fork and clone this repository, submit
 
 ---
 
-Made with ❤️ by Team Infinity.
+<p align="center">Made with ❤️ by Team Infinity.</p>
