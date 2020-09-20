@@ -1,12 +1,12 @@
-</html>
+<html>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
 <head>
     <meta charset="utf-8">
-    <title>Results</title>
+    <link rel="icon" href="images/circle-cropped.png" class="avatar">
+    <title>Coursearch-Results</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.deep_purple-pink.min.css"> -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
@@ -18,22 +18,23 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" href="../static/css/styles.css">
-    <link rel="icon" href="../static/images/newicon.png" class="avatar">
-    <!-- <script src="https://code.jquery.com/jquery-3.5.1.js"></script> -->
     <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
+
 
     <script>
         $(document).ready(function() {
             $('#example').DataTable();
         });
     </script>
+
 </head>
 
 <body class="results">
+    
     <section class="section-head">
         <nav class="navbar navbar-expand-lg nav-adjust">
-            <a class="navbar-brand" href="/"><img src="static/images/newicon.png" alt="image" class="nav-icon"><span >Coursearch</span></a>
+            <a class="navbar-brand" href="/"><img src="static/images/Coursearch.png" alt="image" class="nav-icon">Coursearch</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon">
           <i class="fa fa-navicon" class="hamburger"></i>
@@ -50,6 +51,7 @@
                 </ul>
             </div>
         </nav>
+
         <div class="manip-search">
             <form class="search" action="{{ url_for('get_query') }}" method="post">
                 <input class='searchbar transparent' id='query' name='query' type='text' required value="{{ query }}" autocomplete="off" />
@@ -69,7 +71,6 @@
                     <th class="table-header">Course Name</th>
                     <th class="table-header">Offered by</th>
                     <th class="table-header">Partner Name</th>
-                    <!-- <th class="table-header">Difficulty</th> -->
                     <th class="table-header">Rating</th>
                     <th class="table-header">Rating count</th>
                 </tr>
@@ -82,7 +83,6 @@
                     <td>{{ df["course_name"][i] }}<br><br><button class="visit-link"><a href="{{ df['link_to_course'][i] }}" ><i class="fas fa-arrow-right icon"></i></a></button></td>
                     <td>{{ df["offered_by"][i] }}</td>
                     <td>{{ df["partner_name"][i] }}</td>
-                    <!-- <td>{{ df["difficulty_level"][i] }}</td> -->
                     <td>{{ df["rating_out_of_five"][i] }}</td>
                     <td>{{ df["rating_count"][i] }}</td>
                 </tr>
@@ -90,6 +90,41 @@
                 {% endfor %}
             </tbody>
         </table>
+    </section>
+
+    <section class="mobile">
+        <div class="container bcontent">
+            {% for i in range(l) %}
+            <div class="card" style="width: 100%;">
+                <div class="row no-gutters">
+                    <div class="col-sm-4">
+                        <img src=" {{ df['image_link'][i] }}" alt="image" class="img-course card-image">
+                    </div>
+                    <div class="col-sm-8">
+                        <div class="card-body">
+                            <div class="row course-desc">
+                                <h6 class="course-name"> {{ df["course_name"][i] }}</h6>
+                            </div>
+                            <div class="row course-desc">
+                                <div class="col-sm-9">
+                                    {{ df["offered_by"][i] }}<br>
+                                    {{ df["partner_name"][i] }}
+                                </div>
+                                <div class="col-sm-3">
+                                    <button class="visit-link-mobile"><a href="{{ df['link_to_course'][i] }}" ><i class="fas fa-arrow-right icon"></i></a></button>                                    
+                                </div>                            
+                            </div>
+                            <hr>
+                            <div class="row course-desc">
+                                <div class="col-sm-5">Rating<br>{{ df["rating_out_of_five"][i] }}</div>
+                                <div class="col-sm-5">Rating Count<br>{{ df["rating_count"][i] }}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
     </section>
     </div>
 
