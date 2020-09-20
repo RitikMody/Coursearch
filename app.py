@@ -29,7 +29,7 @@ def scrape(searchTerm):
 def sort_df(df):
     df = df.dropna()
     df['rank']=0.7*df["rating_count"] + 0.3*df["rating_out_of_five"]
-    df = df.sort_values(by=['rating_out_of_five'],ascending=True)
+    df = df.sort_values(by=['rank'],ascending=False)
     print(df)
     return df
 
@@ -41,13 +41,16 @@ def home():
 def docs():
     return render_template('docs.html')
 
-@app.route('/resuts', methods=['POST','GET'])
+@app.route('/results', methods=['POST','GET'])
 def get_query():
     if request.method=="POST":
         query = str(request.form['query']).title()
-        df = scrape(query)
-        df = sort_df(df)
-        return render_template('results.html', query=query,df=df,l=df.shape[0])
+    else:
+        args = request.args
+        query = str(args['query']).title()
+    df = scrape(query)
+    df = sort_df(df)
+    return render_template('results.html', query=query,df=df,l=df.shape[0])
 
 @app.route('/api',methods = ['GET'])
 def api():
