@@ -1,4 +1,6 @@
 import json
+import re
+import os
 import time 
 from bs4 import BeautifulSoup
 from selenium import webdriver
@@ -20,13 +22,15 @@ def format_stars(s):
 def configure_driver():
 	chrome_options = Options()
 	chrome_options.add_argument("--headless")
-	chrome_options = Options()
-	driver = webdriver.Chrome(executable_path="chromedriver.exe", options = chrome_options)
+	# chrome_options = Options()
+	chrome_options.add_argument("--disable-dev-shm-usage")
+	chrome_options.add_argument("--no-sandbox")
+	# driver = webdriver.Chrome(executable_path="chromedriver.exe", options = chrome_options)
+	driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), options = chrome_options)
 	return driver
 
 def getCourses(search_keyword):
 	driver = configure_driver()
-
 	driver.get(f"https://www.udacity.com/courses/all?search={search_keyword}")
 	try:
 		WebDriverWait(driver, 5).until(lambda s: s.find_element_by_class_name("catalog-cards__list").is_displayed())
@@ -44,7 +48,6 @@ def getCourses(search_keyword):
 			i = i + 1
 		except:
 			pass
-	print(i)
 	ActionChains(driver).send_keys(Keys.ESCAPE).perform()
 	
 	soup = BeautifulSoup(driver.page_source, "lxml")
@@ -66,14 +69,14 @@ def getCourses(search_keyword):
 
 			if course.select_one(reviews_selector).text:
 				mydict["rating_count"] = course.select_one(reviews_selector).text
-				mydict["rating_out_of_five"] = format_stars(course.select_one(stars_selector)['style'])
+				mydict["rating_out_of_five"] = float(re.sub(" Reviews","",str(format_stars(course.select_one(stars_selector)['style']))))
 				mydict["course_name"] = course.select_one(title_selector).text
-				mydict["offered_by"] = course.select_one(partner_selector).text
+				mydict["offered_by"] = "Udacity"
 				mydict["partner_name"] = course.select(author_selector)[-1].text
 				mydict["link_to_course"] = 'https://www.udacity.com' + course.select_one(link_selector)['href']
 				mydict["image_link"] = image_selector
 				mydict["difficulty_level"] = course.select_one(level_selector).text.capitalize()
-				mylist.append(json.dumps(mydict))
+				mylist.append(mydict)
 			else:
 				continue
 	driver.close()

@@ -34,7 +34,7 @@
           <a href="#" class="nav-link">Search</a>
         </li>
         <li class="nav-item">
-          <a href="#" class="nav-link">Documentation</a>
+          <a href="/docs" class="nav-link">Documentation</a>
         </li>
       </ul>
     </div>
@@ -53,7 +53,7 @@
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Turpis egestas sed tempus urna et pharetra pharetra massa.
           </p>
           <form class="search" action="{{ url_for('get_query') }}" method="post">
-            <input class='searchbar transparent' id='query' name='query' type='text' required placeholder='Search' />
+            <input class='searchbar transparent' id='query' name='query' type='text' required placeholder='Search' autocomplete="off" />
             <span><button type="submit" name="submit" class="button go"><i class="fas fa-search"></i></button>
           </form>
         </div>

@@ -18,7 +18,7 @@ def scrape(searchTerm):
     scrape_with_crochet(searchTerm=searchTerm ,spider = udemy.UdemySpider) 
     scrape_with_crochet(searchTerm=searchTerm ,spider = coursera.CourseraSpider) 
     time.sleep(5)
-    output_data.extend(pluralsight.getCourses(searchTerm))
+    # output_data.extend(pluralsight.getCourses(searchTerm))
     # output_data.extend(udacity.getCourses(searchTerm))
     df = pd.DataFrame()
     for i in output_data:
@@ -26,14 +26,28 @@ def scrape(searchTerm):
     output_data.clear()
     return df
 
+def sort_df(df):
+    df = df.dropna()
+    df['rank']=0.7*df["rating_count"] + 0.3*df["rating_out_of_five"]
+    df = df.sort_values(by=['rating_out_of_five'],ascending=True)
+    print(df)
+    return df
+
 @app.route('/')
-def hello_world():
-    df = scrape("deep learning")
-    return render_template('index.html',  tables=[df.to_html(classes='data')], titles=df.columns.values)
+def home():
+    return render_template('home.html')
 
 @app.route('/docs')
 def docs():
     return render_template('docs.html')
+
+@app.route('/resuts', methods=['POST','GET'])
+def get_query():
+    if request.method=="POST":
+        query = str(request.form['query']).title()
+        df = scrape(query)
+        df = sort_df(df)
+        return render_template('results.html', query=query,df=df,l=df.shape[0])
 
 @app.route('/api',methods = ['GET'])
 def api():
@@ -47,12 +61,14 @@ def api():
             time.sleep(2)
         elif(args["site"]=="pluralsight"):
             output_data.extend(pluralsight.getCourses(args["searchTerm"]))
-
+        elif(args["site"]=="udacity"):
+            output_data.extend(udacity.getCourses(args["searchTerm"]))
     else:
         scrape_with_crochet(searchTerm=args["searchTerm"] ,spider= udemy.UdemySpider) 
         scrape_with_crochet(searchTerm=args["searchTerm"] ,spider= coursera.CourseraSpider) 
         time.sleep(5)
-        output_data.extend(pluralsight.getCourses(args["searchTerm"]))
+        # output_data.extend(pluralsight.getCourses(args["searchTerm"]))
+
     res = jsonify(output_data)
     output_data.clear()
     return res
@@ -70,4 +86,4 @@ def _crawler_result(item, response, spider):
     output_data.append(dict(item))
 
 if __name__ == '__main__':
-   app.run(debug=False)
+   app.run(debug=True)
