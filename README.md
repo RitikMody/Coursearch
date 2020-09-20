@@ -35,7 +35,7 @@ This is our submission for the HackChennai Hackathon 2020. It was made under 36 
 
 ## Features:
 
-- Crawls information from Coursera, Udemy, Pluralsight and Udacity to gather MOOC data for any search term.
+- Crawls information from Coursera, Udemy, Pluralsight and Udacity (in progress) to gather MOOC data for any search term.
 - Ranks the courses using a weighted average of their number of reviews and the average rating (out of five.)
 - Allows the user to further filter the results on any basis they want: difficulty, ratings, intructor, etc.
 - Additional search option is provided in the table too.
