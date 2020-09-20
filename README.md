@@ -75,6 +75,7 @@ The live project is deployed on https://coursearch.herokuapp.com/. You may use i
 ---
 
 ## Future scope:
+- Fix the Udacity web crawler so that it works.
 - Convert the website into a PWA.
 - Explore and mine data from other platforms too.
 - Add a variety of parameters to the `/api` endpoint.
