@@ -1,70 +1,76 @@
-.main{
-  background-color:#1d1b38;
-  width: 80%;
-  margin: auto;
+.main {
+    background-color: #1d1b38;
+    width: 80%;
+    margin: auto;
 }
+
 
 /* nav bar */
-.navbar-brand{
-  font-size: 2rem;
-  font-family: 'Roboto',sans-serif;
-  font-weight:500;
-  color:#fdbf50;
-}
-.fa{
-  color:#fdbf50 !important;
-  font-size:28px;
+
+.navbar-brand {
+    font-size: 2rem;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    color: #fdbf50;
 }
 
-.nav-item{
-  padding: 0 5px;
+.fa {
+    color: #fdbf50 !important;
+    font-size: 28px;
 }
 
-.nav-link{
-  font-size: 0.8rem;
-  font-family:'Roboto',sans-serif;
-  font-weight:300;
-  color:#fdbf50;
+.nav-item {
+    padding: 0 5px;
 }
 
-.nav-link:hover{
-  color: #f7b33e;
+.nav-link {
+    font-size: 0.8rem;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    color: #fdbf50;
 }
 
-.navbar-brand:hover{
-  color: #f7b33e;
+.nav-link:hover {
+    color: #f7b33e;
 }
+
+.navbar-brand:hover {
+    color: #f7b33e;
+}
+
 
 /* home */
-.home{
-  padding: 2rem;
+
+.home {
+    padding: 2rem;
 }
 
-.header{
-  font-family: 'Roboto',sans-serif;
-  font-weight: 700;
+.header {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
 }
 
-.title{
-  color: #ff6464 ;
-  font-size: 3.2rem;
+.title {
+    color: #ff6464;
+    font-size: 3.2rem;
 }
 
-.row-manip{
-  padding:3.5rem 0 0 0;
-}
-.col-manip{
-  padding: 2rem 1.5rem;
-  margin: auto;
-  text-align: center;
+.row-manip {
+    padding: 3.5rem 0 0 0;
 }
 
-.desc{
-  color: #fdbf50;
-  font-family: 'Roboto',sans-serif;
-  font-weight: 400;
-  font-size:1.2rem;
-  line-height: 1.5;
+.col-manip {
+    padding: 2rem 1.5rem;
+    margin: auto;
+    text-align: center;
+}
+
+.desc {
+    color: #fdbf50;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 1.2rem;
+    line-height: 1.5;
 }
 
 .searchbar {
@@ -100,89 +106,112 @@
     color: #fc5656;
 }
 
-.img-home{
+.img-home {
     height: 15rem;
     padding: 0;
 }
 
+
 /* Results page */
-.nav-adjust{
-  width: 80%;
-  margin: auto;
+
+.nav-adjust {
+    width: 100vw;
+    margin: auto;
 }
 
-.results{
-  text-align: center;
-  margin: auto;
-  background-color: #f8f8f8;
+.results {
+    text-align: center;
+    margin: auto;
+    background-color: #f8f8f8;
 }
 
-.section-head{
-  background-color: #1d1b38;
+.section-head {
+    background-color: #1d1b38;
 }
 
-.result-header{
-  padding: 2rem 0 4rem 0;
+.result-header {
+    padding: 2rem 0 4rem 0;
 }
 
-.head{
-  font: 'Roboto', sans-serif;
-  font-weight: 700;
-  color: #ff6464;
-  font-size: 4rem;
+.head {
+    font: 'Roboto', sans-serif;
+    font-weight: 700;
+    color: #ff6464;
+    font-size: 4rem;
 }
 
-.contents{
-  background: #f8f8f8;
-  margin: auto;
-  padding: 2rem 0;
-  font: 'Roboto', sans-serif;
-  font-weight: 500;
-  color: #1d1b38;
-  font-size: 1.2rem;
+.contents {
+    background: #f8f8f8;
+    margin: auto;
+    padding: 2rem 0;
+    font: 'Roboto', sans-serif;
+    font-weight: 500;
+    color: #1d1b38;
+    font-size: 1.2rem;
 }
 
-.img-course{
-  height: 8rem;
-  margin: 1rem 0;
+.img-course {
+    height: 8rem;
+    margin: 1rem 0;
 }
 
-.table{
-  text-align: left;
+.table {
+    text-align: left;
 }
 
-.table-header{
-  color: #ff6464;
+.table-header {
+    color: #1d1b38 !important;
 }
 
-.visit-link{
-  background-color: #ff6464  !important;
-  border-width: 0 !important;
-  color: #f8f8f8 !important;
-  width: 2rem;
-  height: 2rem;
-  border-radius: 50%;
-}
-.icon{
-  color: #f8f8f8 !important;
-}
-.page-link{
-  background-color: #1d1b38;
-  color:#f8f8f8;
+.visit-link {
+    background-color: #ff6464 !important;
+    border-width: 0 !important;
+    color: #f8f8f8 !important;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
 }
 
-.active{
-  background-color: #f8f8f8;
-  color:#ff6464;
+.icon {
+    color: #f8f8f8 !important;
 }
+
+a.page-link {
+    background-color: #1d1b38;
+    color: #f8f8f8;
+}
+
+.page link .active {
+    background-color: #f8f8f8;
+    color: #ff6464 !important;
+}
+
 
 /* footer */
-.footer{
-    font-family:'Roboto',sans-serif;
-    font-weight:300;
-    color:#fdbf50;
+
+.footer {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    color: #fdbf50;
     font-size: 0.8rem;
     text-align: center;
     padding-top: 2rem;
 }
+
+
+/*2c1654 ff6464 00be65 fdf550 */
+
+
+/* footer */
+
+.footer {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    color: #fdbf50;
+    font-size: 0.8rem;
+    text-align: center;
+    padding-top: 2rem;
+}
+
+
 /*2c1654 ff6464 00be65 fdf550 */
