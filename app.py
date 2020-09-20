@@ -17,9 +17,8 @@ crawl_runner = CrawlerRunner()
 def scrape(searchTerm):
     scrape_with_crochet(searchTerm=searchTerm ,spider = udemy.UdemySpider) 
     scrape_with_crochet(searchTerm=searchTerm ,spider = coursera.CourseraSpider) 
-    time.sleep(5)
-    # output_data.extend(pluralsight.getCourses(searchTerm))
-    # output_data.extend(udacity.getCourses(searchTerm))
+    time.sleep(2)
+    output_data.extend(pluralsight.func(searchTerm))
     df = pd.DataFrame()
     for i in output_data:
         df = df.append(i,ignore_index= True)
@@ -29,7 +28,7 @@ def scrape(searchTerm):
 def sort_df(df):
     df = df.dropna()
     df['rank']=0.7*df["rating_count"] + 0.3*df["rating_out_of_five"]
-    df = df.sort_values(by=['rank'],ascending=False)
+    df = df.sort_values(by=['rating_count'],ascending=False)
     print(df)
     return df
 
@@ -70,7 +69,7 @@ def api():
         scrape_with_crochet(searchTerm=args["searchTerm"] ,spider= udemy.UdemySpider) 
         scrape_with_crochet(searchTerm=args["searchTerm"] ,spider= coursera.CourseraSpider) 
         time.sleep(5)
-        # output_data.extend(pluralsight.getCourses(args["searchTerm"]))
+        output_data.extend(pluralsight.func(args["searchTerm"]))
 
     res = jsonify(output_data)
     output_data.clear()
