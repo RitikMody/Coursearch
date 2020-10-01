@@ -2,72 +2,73 @@
 <html lang="en" dir="ltr">
 
 <head>
-
-  <meta charset="utf-8">
-  <link rel="icon" href="static/images/notes.png" class="nav-icon">
-  <title>Coursearch</title>
-
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-  <script src="https://kit.fontawesome.com/02a9b21a1c.js" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="static/css/styles.css">
-
+	
+	<meta charset="utf-8">
+	<link rel="icon" href="static/images/newicon.png" class="nav-icon">
+	<title>Coursearch</title>
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+	<script src="https://kit.fontawesome.com/02a9b21a1c.js" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="static/css/styles.css">
+	
 </head>
 
 <body class="main">
-
-  <!-- navbar -->
-
-  <nav class="navbar navbar-expand-lg">
-    <a class="navbar-brand" href="/"><img src="static/images/newicon.png" alt="image" class="nav-icon"><span >Coursearch</span></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon">
-        <i class="fa fa-navicon" class="hamburger"></i>
-      </span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a href="#search" class="nav-link">Search</a>
-        </li>
-        <li class="nav-item">
-          <a href="/docs" class="nav-link">Documentation</a>
-        </li>
-      </ul>
-    </div>
-  </nav>
-
-  <section>
-    <div class="home">
-
-      <!-- <div class="header">
-        <h1 class="title">Coursearch</h1>
-      </div> -->
-      <div class="row row-manip">
-        <div class="col-lg-6 order-lg-2 order-md-1 order-sm-1 col-manip">
-          <img src="static/images/home-img1.svg" alt="image" class="img-home">
-        </div>
-        <div class="col-lg-6 order-lg-1 order-md-2 order-sm-2 col-mainp">
-          <p class="desc">
-            Since the start of the lockdown, have you too been confused about which courses to choose? Stuck with too many options from Coursera, Udemy, and other such sites?<br><br>
-            If so, this app is your solution! Just enter something you want to learn, and we'll get you courses from top platforms, effectively ranked with our <em>unique algorithm</em>. You no longer have to worry about choosing the best options with a list of the best ranked courses from the top websites!
-          </p>
-          <form class="search" action="{{ url_for('get_query') }}" method="post" id="search">
-            <input class='searchbar transparent' id='query' name='query' type='text' required placeholder='Search' autocomplete="off" />
-            <span><button type="submit" name="submit" class="button go"><i class="fas fa-search"></i></button>
-          </form>
-        </div>
-      </div>
-  </section>
-
-  <footer>
-    <p class="footer">Made with <i class="fas fa-heart"></i> by Team Infinity</p>
-  </footer>
-</body>
-
-</html>
+	
+	<!-- navbar -->
+	
+	<nav class="navbar navbar-expand-lg pt-5">
+		<a class="navbar-brand" href="/"><img src="static/images/newicon.png" alt="image" class="nav-icon"><span >Coursearch</span></a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon">
+				<i class="fa fa-navicon" class="hamburger"></i>
+			</span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item">
+					<a href="#search" class="nav-link">Search</a>
+				</li>
+				<li class="nav-item">
+					<a href="/docs" class="nav-link">Documentation</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
+	
+	<section>
+		<div class="home">
+			
+			<!-- <div class="header">
+				<h1 class="title">Coursearch</h1>
+			</div> -->
+			<div class="row row-manip">
+				<div class="col-lg-6 order-lg-2 order-md-1 order-sm-1 col-manip">
+					<img src="static/images/1.png" alt="image" class="img-home" style="width: 25rem; height: auto;">
+				</div>
+				<div class="col-lg-6 order-lg-1 order-md-2 order-sm-2 col-mainp">
+					<p class="desc">
+						During the lockdown, have you too been confused about which courses to choose? Stuck with too many options from Coursera, Udemy, and other such sites?<br><br>
+						If so, this app is your solution! Just enter something you want to learn, and we'll get you courses from top platforms, effectively ranked with our <em>unique algorithm</em>. You no longer have to worry about choosing the best options with a list of the best ranked courses from the top websites!
+					</p>
+					<form class="search" action="{{ url_for('get_query') }}" method="post" id="search">
+						<input class='searchbar transparent' id='query' name='query' type='text' required placeholder='Search' autocomplete="off" />
+						<span><button type="submit" name="submit" class="button go"><i class="fas fa-search"></i></button>
+						</form>
+					</div>
+				</div>
+			</section>
+			
+			<footer>
+				<p class="footer">Made with <i class="fas fa-heart"></i> by Team Infinity</p>
+			</footer>
+		</body>
+		
+		</html>
+		

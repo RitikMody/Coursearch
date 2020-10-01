@@ -3,134 +3,136 @@
 <html lang="en" dir="ltr">
 
 <head>
-    <meta charset="utf-8">
-    <link rel="icon" href="../static/images/notes.png" class="avatar">
-    <title>Coursearch-Results</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-    <script src="https://kit.fontawesome.com/02a9b21a1c.js" crossorigin="anonymous"></script>
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css">
-    <link rel="stylesheet" href="../static/css/styles.css">
-    <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
-
-
-    <script>
-        $(document).ready(function() {
-            $('#example').DataTable();
-        });
-    </script>
-
+	<meta charset="utf-8">
+	<link rel="icon" href="../static/images/newicon.png" class="avatar">
+	<title>Coursearch-Results</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+	
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+	<script src="https://kit.fontawesome.com/02a9b21a1c.js" crossorigin="anonymous"></script>
+	
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
+	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css">
+	<link rel="stylesheet" href="../static/css/styles.css">
+	<script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+	<script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
+	
+	
+	<script>
+		$(document).ready(function() {
+			$('#example').DataTable();
+		});
+	</script>
+	
 </head>
 
 <body class="results">
-    
-    <section class="section-head">
-        <nav class="navbar navbar-expand-lg nav-adjust">
-            <a class="navbar-brand" href="/"><img src="static/images/newicon.png" alt="image" class="nav-icon">Coursearch</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon">
-          <i class="fa fa-navicon" class="hamburger"></i>
-        </span>
-      </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a href="/" class="nav-link">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="/docs" class="nav-link">Documentation</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-
-        <div class="manip-search">
-            <form class="search" action="{{ url_for('get_query') }}" method="post">
-                <input class='searchbar transparent' id='query' name='query' type='text' required value="{{ query }}" autocomplete="off" />
-                <span><button type="submit" name="submit" class="button go"><i class="fas fa-search"></i></button>
-              </form>
-        </div>
-        <div class="result-header">
-            <h1 class="head">{{ query }}</h1>
-        </div>
-    </section>
-
-    <section class="contents">
-        <table id="example" class="table table-responsive table-hover">
-            <thead>
-                <tr>
-                    <th class="table-header">Logo</th>
-                    <th class="table-header">Course Name</th>
-                    <th class="table-header">Offered by</th>
-                    <th class="table-header">Partner Name</th>
-                    <th class="table-header">Rating</th>
-                    <th class="table-header">Rating count</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for i in range(l) %}
-                {% if df["offered_by"][i]|length %}
-                <tr class="item">
-                    <td><img src=" {{ df['image_link'][i] }}" alt="image" class="img-course"></td>
-                    <td>{{ df["course_name"][i] }}<br><br><button class="visit-link"><a href="{{ df['link_to_course'][i] }}" ><i class="fas fa-arrow-right icon"></i></a></button></td>
-                    <td>{{ df["offered_by"][i] }}</td>
-                    <td>{{ df["partner_name"][i] }}</td>
-                    <td>{{ df["rating_out_of_five"][i] }}</td>
-                    <td>{{ df["rating_count"][i] }}</td>
-                </tr>
-                {% endif %}
-                {% endfor %}
-            </tbody>
-        </table>
-    </section>
-
-    <section class="mobile">
-        <div class="container bcontent">
-            {% for i in range(l) %}
-            <div class="card" style="width: 100%;">
-                <div class="row no-gutters">
-                    <div class="col-sm-4">
-                        <img src=" {{ df['image_link'][i] }}" alt="image" class="img-course card-image">
-                    </div>
-                    <div class="col-sm-8">
-                        <div class="card-body">
-                            <div class="row course-desc">
-                                <h6 class="course-name"> {{ df["course_name"][i] }}</h6>
-                            </div>
-                            <div class="row course-desc">
-                                <div class="col-sm-9">
-                                    {{ df["offered_by"][i] }}<br>
-                                    {{ df["partner_name"][i] }}
-                                </div>
-                                <div class="col-sm-3">
-                                    <button class="visit-link-mobile"><a href="{{ df['link_to_course'][i] }}" ><i class="fas fa-arrow-right icon"></i></a></button>                                    
-                                </div>                            
-                            </div>
-                            <hr>
-                            <div class="row course-desc">
-                                <div class="col-sm-5">Rating<br>{{ df["rating_out_of_five"][i] }}</div>
-                                <div class="col-sm-5">Rating Count<br>{{ df["rating_count"][i] }}</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            {% endfor %}
-        </div>
-    </section>
-    </div>
-
-    <footer class="res-footer">
-        <p class="footer-new">Made with <i class="fas fa-heart"></i> by Team Infinity</p>
-    </footer>
+	
+	<section class="section-head">
+		<nav class="navbar navbar-expand-lg nav-adjust pt-5">
+			<a class="navbar-brand" href="/"><img src="static/images/newicon.png" alt="image" class="nav-icon">Coursearch</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon">
+					<i class="fa fa-navicon" class="hamburger"></i>
+				</span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item">
+						<a href="/" class="nav-link">Home</a>
+					</li>
+					<li class="nav-item">
+						<a href="/docs" class="nav-link">Documentation</a>
+					</li>
+				</ul>
+			</div>
+		</nav>
+		
+		<div class="manip-search">
+			<div class="result-header">
+				<!-- <h1 class="head">{{ query }}</h1> -->
+				<img src="../static/images/2.png" style="width: 20rem; height: auto; margin: 0 auto;">
+				
+				<form class="search" action="{{ url_for('get_query') }}" method="post">
+					<input class='searchbar transparent' id='query' name='query' type='text' required value="{{ query }}" autocomplete="off" />
+					<span><button type="submit" name="submit" class="button go"><i class="fas fa-search"></i></button>
+					</form>
+				</div>
+			</div>
+		</section>
+		
+		<section class="contents">
+			<table id="example" class="table table-responsive table-hover">
+				<thead>
+					<tr>
+						<th class="table-header">Logo</th>
+						<th class="table-header">Course Name</th>
+						<th class="table-header">Offered by</th>
+						<th class="table-header">Partner Name</th>
+						<th class="table-header">Rating</th>
+						<th class="table-header">Rating count</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for i in range(l) %}
+					{% if df["offered_by"][i]|length %}
+					<tr class="item">
+						<td><img src=" {{ df['image_link'][i] }}" alt="image" class="img-course"></td>
+						<td>{{ df["course_name"][i] }}<br><br><button class="visit-link"><a href="{{ df['link_to_course'][i] }}" ><i class="fas fa-arrow-right icon"></i></a></button></td>
+						<td>{{ df["offered_by"][i] }}</td>
+						<td>{{ df["partner_name"][i] }}</td>
+						<td>{{ df["rating_out_of_five"][i] }}</td>
+						<td>{{ df["rating_count"][i] }}</td>
+					</tr>
+					{% endif %}
+					{% endfor %}
+				</tbody>
+			</table>
+		</section>
+		
+		<section class="mobile">
+			<div class="container bcontent">
+				{% for i in range(l) %}
+				<div class="card" style="width: 100%;">
+					<div class="row no-gutters">
+						<div class="col-sm-4">
+							<img src=" {{ df['image_link'][i] }}" alt="image" class="img-course card-image">
+						</div>
+						<div class="col-sm-8">
+							<div class="card-body">
+								<div class="row course-desc">
+									<h6 class="course-name"> {{ df["course_name"][i] }}</h6>
+								</div>
+								<div class="row course-desc">
+									<div class="col-sm-9">
+										{{ df["offered_by"][i] }}<br>
+										{{ df["partner_name"][i] }}
+									</div>
+									<div class="col-sm-3">
+										<button class="visit-link-mobile"><a href="{{ df['link_to_course'][i] }}" ><i class="fas fa-arrow-right icon"></i></a></button>                                    
+									</div>                            
+								</div>
+								<hr>
+								<div class="row course-desc">
+									<div class="col-sm-5">Rating<br>{{ df["rating_out_of_five"][i] }}</div>
+									<div class="col-sm-5">Rating Count<br>{{ df["rating_count"][i] }}</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+		</section>
+	</div>
+	
+	<footer class="res-footer">
+		<p class="footer-new">Made with <i class="fas fa-heart"></i> by Team Infinity</p>
+	</footer>
 </body>
 
 </html>
