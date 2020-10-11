@@ -15,9 +15,10 @@ output_data = []
 crawl_runner = CrawlerRunner()
 
 def scrape(searchTerm):
-    scrape_with_crochet(searchTerm=searchTerm ,spider = udemy.UdemySpider) 
-    scrape_with_crochet(searchTerm=searchTerm ,spider = coursera.CourseraSpider) 
-    time.sleep(2)
+    scrape_with_crochet(searchTerm=searchTerm ,spider = udemy.UdemySpider)
+    scrape_with_crochet(searchTerm=searchTerm ,spider = coursera.CourseraSpider)
+    scrape_with_crochet(searchTerm=searchTerm ,spider = udacity.UdacitySpider)
+    time.sleep(10)
     output_data.extend(pluralsight.func(searchTerm))
     df = pd.DataFrame()
     for i in output_data:
