@@ -16,9 +16,9 @@ crawl_runner = CrawlerRunner()
 
 def scrape(searchTerm):
     scrape_with_crochet(searchTerm=searchTerm ,spider = udemy.UdemySpider)
-    scrape_with_crochet(searchTerm=searchTerm ,spider = coursera.CourseraSpider)
     scrape_with_crochet(searchTerm=searchTerm ,spider = udacity.UdacitySpider)
-    time.sleep(10)
+    output_data.extend(coursera.func(searchTerm))
+    time.sleep(5)
     output_data.extend(pluralsight.func(searchTerm))
     df = pd.DataFrame()
     for i in output_data:
@@ -60,7 +60,7 @@ def api():
             scrape_with_crochet(searchTerm=args["searchTerm"] ,spider= udemy.UdemySpider)
             time.sleep(2)
         elif(args["site"]=="coursera"):
-            scrape_with_crochet(searchTerm=args["searchTerm"] ,spider= coursera.CourseraSpider) 
+            output_data.extend(coursera.getCourses(args["searchTerm"]))
             time.sleep(2)
         elif(args["site"]=="pluralsight"):
             output_data.extend(pluralsight.getCourses(args["searchTerm"]))
@@ -68,7 +68,7 @@ def api():
             output_data.extend(udacity.getCourses(args["searchTerm"]))
     else:
         scrape_with_crochet(searchTerm=args["searchTerm"] ,spider= udemy.UdemySpider) 
-        scrape_with_crochet(searchTerm=args["searchTerm"] ,spider= coursera.CourseraSpider) 
+        output_data.extend(coursera.func(args["searchTerm"]))
         time.sleep(5)
         output_data.extend(pluralsight.func(args["searchTerm"]))
 
