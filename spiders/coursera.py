@@ -1,43 +1,58 @@
-import scrapy
-from scrapy.crawler import CrawlerProcess
-from scrapy.utils.project import get_project_settings
 import json
+import os
+from bs4 import BeautifulSoup
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.common.exceptions import TimeoutException
+
+def configure_driver():
+	chrome_options = Options()
+	chrome_options.add_argument("--headless")
+	# chrome_options = Options()
+	chrome_options.add_argument("--disable-dev-shm-usage")
+	chrome_options.add_argument("--no-sandbox")
+	# driver = webdriver.Chrome(executable_path="chromedriver.exe", options = chrome_options)
+	driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), options = chrome_options)
+	return driver
 
 def scan(s):
 	if s:
-		return int(s[s.index(">") + 1: s.index("<", 1)].replace(',', ''))
+		return int(s.replace(',', '').replace('(', '').replace(')', ''))
 
 def decimals(n):
 	if n:
 		return float(n)
 
-class CourseraSpider(scrapy.Spider):
-	name = 'coursera_spider'
-	def __init__(self, *args, **kwargs):
-		super(CourseraSpider, self).__init__(*args, **kwargs)
-		searchterm = kwargs.get('category')
-		searchterm = ('%20').join(searchterm.lower().split())
-		self.start_urls = [f'https://www.coursera.org/search?query={searchterm}&page='
-				  + str(i) + '&index=prod_all_products_term_optimization' for i in [1, 2, 3]]
+def getCourses(driver, search_keyword):
 
-	def parse(self, response):
-		COURSE_SELECTOR = './/li[@class="ais-InfiniteHits-item"]'
-		for course in response.xpath(COURSE_SELECTOR):
+	mylist = []
+	
+	for page in range(1, 4):
+		driver.get(f"https://www.coursera.org/search?query={search_keyword}%p={page}")
+		soup = BeautifulSoup(driver.page_source, "lxml")
+		for course in soup.select("li.ais-InfiniteHits-item"):
+			mydict = {}
+			NAME_SELECTOR = ".card-title"
+			PARTNER_SELECTOR = 'span.partner-name'
+			IMAGE_SELECTOR = 'div.card-content div.cds-grid-item img'
+			RATING_SELECTOR = ".ratings-text"
+			NUM_RATINGS_SELECTOR = "span.ratings-count span"	
+			DIFFICULTY_SELECTOR = ".difficulty"
+			LINK_SELECTOR = "div a"
+			mydict["course_name"] = course.select_one(NAME_SELECTOR).text
+			mydict["partner_name"] = course.select_one(PARTNER_SELECTOR).text
+			mydict["image_link"] = course.select_one(IMAGE_SELECTOR)['src']
+			mydict["rating_out_of_five"] = decimals(course.select_one(RATING_SELECTOR).text)
+			mydict["rating_count"] = scan(course.select_one(NUM_RATINGS_SELECTOR).text)
+			mydict["difficulty_level"] = course.select_one(DIFFICULTY_SELECTOR).text
+			mydict["link_to_course"] = 'https://www.coursera.org' + course.select_one(LINK_SELECTOR)['href']
+			mydict["offered_by"] = "Coursera"
+			mylist.append(mydict)
+	return mylist
 
-			NAME_SELECTOR = '.headline-1-text::text'
-			PARTNER_SELECTOR = '.partner-name::text'
-			IMAGE_SELECTOR = './/div[@class="vertical-box"]//div[@class="image-wrapper"]//img/@src'
-			RATING_SELECTOR = '.ratings-text::text'
-			NUM_RATINGS_SELECTOR = './/span[@class="ratings-count"]//span'
-			DIFFICULTY_SELECTOR = '.difficulty::text'
-			LINK_SELECTOR = './div/a/@href'
-			yield {
-				'course_name': course.css(NAME_SELECTOR).extract_first(),
-				'partner_name': course.css(PARTNER_SELECTOR).extract_first(),
-				'image_link': course.xpath(IMAGE_SELECTOR).extract_first(),
-				'rating_out_of_five': decimals(course.css(RATING_SELECTOR).extract_first()),
-				'rating_count': scan(course.xpath(NUM_RATINGS_SELECTOR).extract_first()),
-				'difficulty_level': course.css(DIFFICULTY_SELECTOR).extract_first(),
-				'link_to_course': 'https://www.coursera.org' + course.xpath(LINK_SELECTOR).extract_first(),
-				'offered_by': 'Coursera'
-			}
+def func(search_keyword):
+	driver = configure_driver()
+	list = getCourses(driver,search_keyword)
+	driver.close()
+	return list
